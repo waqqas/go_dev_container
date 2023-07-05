@@ -1,0 +1,8 @@
+version: '3.9'
+services:
+  server:
+    environment:
+      - TARGET=debug
+    volumes:
+      - .:/workspace:cached
+    command: /bin/sh -c "while sleep 1000; do :; done"
