@@ -13,15 +13,16 @@ ENV CGO_ENABLED=0 GOOS=linux GOARCH=amd64
 
 FROM builder AS prod
 
-# RUN go build -ldflags="-s -w" -o server ./backend
+RUN go build -ldflags="-s -w" -o server ./src
 
-# ENTRYPOINT ["/workspace/server"]
+ENTRYPOINT ["/workspace/server"]
 
 ##########################################################################################
 
 FROM builder AS debug
 
 RUN apk add --no-cache git
+RUN apk add --no-cache inotify-tools
 
 ENV CGO_ENABLED 0
 
@@ -29,8 +30,7 @@ RUN go install -ldflags "-s -w -extldflags '-static'" github.com/go-delve/delve/
 RUN go install -v github.com/ramya-rao-a/go-outline@v0.0.0-20210608161538-9736a4bde949
 RUN go install -v golang.org/x/tools/gopls@latest
 RUN go install honnef.co/go/tools/cmd/staticcheck@2022.1
-# RUN go build -gcflags "all=-N -l" -o server .
+# RUN go build -gcflags "all=-N -l" -o server ./src
 
-RUN apk add --no-cache inotify-tools
 
-# ENTRYPOINT ["sh", "start_script.sh"]
+ENTRYPOINT ["sh", "start_script.sh"]

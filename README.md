@@ -15,6 +15,6 @@ Following steps are to be performed once on the developer's machine
 Following steps are required to be done to run the dev-container
 
 - Create `.env` file by copying the sample file using this command `cp .env.sample .env`
-- Edit `.env` file. `TARGET` can be either `prod` or `debug`
+- Edit `.env` file
 
 - `docker-compose build --build-args target=debug`

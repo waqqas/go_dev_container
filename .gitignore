@@ -28,3 +28,17 @@
 go.work
 
 # End of https://www.toptal.com/developers/gitignore/api/go,dotenv
+
+# macOS
+**/.DS_Store
+
+# Dev build
+build/
+tmp/
+
+# Test
+*.out
+
+
+# Application
+server

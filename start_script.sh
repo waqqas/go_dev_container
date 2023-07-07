@@ -12,7 +12,7 @@ runServer() {
   touch /tmp/dlv_log/output.log
 
   # run server with debug
-  /go/bin/dlv --listen=:4000 --headless=true --log=true --accept-multiclient --api-version=2 exec /app/server | tee -a /tmp/dlv_log/output.log &
+  /go/bin/dlv --listen=:4000 --headless=true --log=true --accept-multiclient --api-version=2 exec /workspace/server | tee -a /tmp/dlv_log/output.log &
 
   # wait for Delve to modify log files - means /server is running
   inotifywait -e MODIFY /tmp/dlv_log/output.log &>/dev/null
@@ -40,7 +40,7 @@ killRunningServer() {
 
 buildServer() {
   echo Building server
-  go build -gcflags "all=-N -l" -o /workspace/server ./app
+  go build -gcflags "all=-N -l" -o server ./src
 }
 
 rerunServer () {
@@ -65,7 +65,7 @@ unlockBuild() {
 }
 
 # run the server for the first time
-rerunServer
+runServer
 
 inotifywait -e MODIFY -r -m /workspace |
   while read path action file; do

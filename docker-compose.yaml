@@ -1,6 +1,6 @@
 version: '3.9'
 services:
-  server:
+  apiserver:
     build:
       context: .
       dockerfile: Dockerfile
@@ -9,3 +9,5 @@ services:
       - ${SERVER_PORT}:${SERVER_PORT}
     expose:
       - ${SERVER_PORT}
+    # volumes:
+    #   - .:/workspace:cached

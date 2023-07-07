@@ -2,7 +2,7 @@
 // README at: https://github.com/devcontainers/templates/tree/main/src/go
 {
 	"name": "API Server",
-	"service": "server",
+	"service": "apiserver",
 	"dockerComposeFile": [
 		"../docker-compose.yaml",
 		"docker-compose.yaml"
@@ -11,8 +11,7 @@
 		"vscode": {
 			"extensions": [
 				"golang.go",
-				"ms-azuretools.vscode-docker",
-				"ms-vscode.makefile-tools"
+				"ms-azuretools.vscode-docker"
 			]
 		}
 	},
