@@ -9,5 +9,3 @@ services:
       - ${SERVER_PORT}:${SERVER_PORT}
     expose:
       - ${SERVER_PORT}
-    # volumes:
-    #   - .:/workspace:cached
