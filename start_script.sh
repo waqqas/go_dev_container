@@ -7,8 +7,8 @@ mkdir -p /tmp/dlv_log
 runServer() {
   echo Running server
 
-  # create directory and file to
-
+  # create directory and file to store the output
+  
   touch /tmp/dlv_log/output.log
 
   # run server with debug
